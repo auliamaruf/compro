@@ -31,11 +31,9 @@
 
                 <div class="relative overflow-hidden rounded-lg p-8 bg-white shadow-inner border border-blue-50">
                     <div class="absolute top-0 right-0 transform translate-x-4 -translate-y-4 w-24 h-24 opacity-10">
-                        <!-- Decorative pattern/icon -->
                     </div>
                     <p class="text-gray-700 leading-relaxed text-lg relative z-10">
-                        Menjadi perusahaan terdepan yang memberikan layanan terbaik dan berkontribusi dalam pembangunan
-                        ekonomi nasional.
+                        {{ $general->visi }}
                     </p>
                 </div>
             </div>
