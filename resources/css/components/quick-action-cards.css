@@ -1,0 +1,26 @@
+/* Card Effects */
+.card-hover {
+    transition: all 0.3s ease;
+    will-change: transform;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal Animations */
+.modal-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-content.active {
+    transform: scale(1);
+    opacity: 1;
+}

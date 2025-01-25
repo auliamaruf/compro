@@ -1,0 +1,27 @@
+/* Tab Styles */
+.visi-misi-tab {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.visi-misi-tab.active {
+    background-color: #2563eb;
+    color: white;
+}
+
+.visi-misi-tab:not(.active) {
+    color: #1e40af;
+}
+
+/* Tab Content Animation */
+.tab-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+    visibility: hidden;
+}
+
+.tab-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
