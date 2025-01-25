@@ -33,12 +33,15 @@
                         <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div
-                            class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
-                            {{ $post->created_at->format('d M Y') }}
+                        <div class="absolute top-4 right-4 flex space-x-2">
+                            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                {{ $post->created_at->format('d M Y') }}
+                            </span>
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                                {{ $post->category->name }}
+                            </span>
                         </div>
                     </div>
-
                     <div class="p-6">
                         <h3
                             class="font-bold text-xl mb-3 text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
