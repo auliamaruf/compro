@@ -152,7 +152,7 @@
                     </div>
                 </div>
 
-                {{-- <!-- Operating Hours -->
+                <!-- Operating Hours -->
                 <div class="transform hover:-translate-y-1 transition-transform duration-300">
                     <h4 class="font-bold text-lg md:text-xl text-white mb-6 flex items-center space-x-2">
                         <span class="w-8 h-0.5 bg-blue-400"></span>
@@ -173,7 +173,7 @@
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
 
             </div>
