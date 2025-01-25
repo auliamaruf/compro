@@ -22,7 +22,7 @@
 
 <body class="bg-gray-50">
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 top-0">
+    <nav class="fixed w-full z-50 top-0 pb-16">
         <!-- Navbar Background with Enhanced Gradient -->
         <div class="bg-gradient-to-r from-blue-800 via-blue-600 to-blue-800 shadow-lg backdrop-blur-sm bg-opacity-90">
             <div class="container mx-auto px-4 py-4">
