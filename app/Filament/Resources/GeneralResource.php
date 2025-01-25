@@ -18,6 +18,7 @@ class GeneralResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-adjustments-horizontal';
     protected static ?string $navigationLabel = 'General';
     protected static ?string $navigationGroup = 'Pengaturan';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
