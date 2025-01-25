@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
 </head>
 
+@php
+    $general = \App\Models\General::first();
+@endphp
+
 <body class="bg-gray-50">
     <!-- Navbar -->
     <nav class="fixed w-full z-50 top-0">
@@ -29,11 +33,12 @@
                             <div
                                 class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-300">
                             </div>
-                            <img src="logo.png" alt="Logo"
+                            <img src="{{ asset('storage/' . $general->logo) }}" alt="{{ $general->nama_perusahaan }}"
                                 class="h-12 md:h-14 relative transform group-hover:scale-105 transition-all duration-300">
                         </div>
                         <div class="hidden md:block">
-                            <span class="font-bold text-2xl text-white tracking-wide">Nama Perusahaan</span>
+                            <span
+                                class="font-bold text-2xl text-white tracking-wide">{{ $general->nama_perusahaan }}</span>
                             <div class="h-0.5 w-0 bg-blue-300 transition-all duration-300 group-hover:w-full"></div>
                         </div>
                     </div>
@@ -189,8 +194,10 @@
                             <!-- Mobile Menu Header -->
                             <div class="flex items-center justify-between p-4 border-b border-blue-700">
                                 <div class="flex items-center space-x-3">
-                                    <img src="logo.png" alt="Logo" class="h-8 w-8">
-                                    <span class="text-white font-medium">Nama Perusahaan</span>
+                                    <span
+                                        class="font-bold text-2xl text-white tracking-wide">{{ $general->nama_perusahaan }}</span>
+                                    <div class="h-0.5 w-0 bg-blue-300 transition-all duration-300 group-hover:w-full">
+                                    </div>
                                 </div>
                                 <button id="close-mobile-menu" class="p-2 text-white">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -1,3 +1,7 @@
+@php
+    $general = \App\Models\General::first();
+@endphp
+
 <!-- Profile Section -->
 <section class="container mx-auto min-h-screen px-4 py-6 md:py-12">
     <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-xl p-4 md:p-8 max-w-6xl mx-auto">
