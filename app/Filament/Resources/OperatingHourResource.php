@@ -26,20 +26,42 @@ class OperatingHourResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('day')
-                ->label('Hari')
-                ->required()
-                ->maxLength(255),
-                
-            TimePicker::make('open_time')
-                ->label('Jam Buka')
-                ->default('07:30:00')
-                ->required(),
-                
-            TimePicker::make('close_time')
-                ->label('Jam Tutup')
-                ->default('15:00:00')
-                ->required(),
+            Forms\Components\Section::make('Informasi Jam Operasional')
+                ->description('Atur jadwal operasional harian')
+                ->schema([
+                    TextInput::make('day')
+                        ->label('Hari')
+                        ->required()
+                        ->maxLength(255)
+                        ->unique(ignoreRecord: true)
+                        ->regex('/^[A-Za-z\s]+$/')
+                        ->validationMessages([
+                            'required' => 'Hari harus diisi',
+                            'max' => 'Hari tidak boleh lebih dari :max karakter',
+                            'regex' => 'Hari hanya boleh berisi huruf',
+                            'unique' => 'Hari ini sudah terdaftar'
+                        ]),
+
+                    TimePicker::make('open_time')
+                        ->label('Jam Buka')
+                        ->default('07:30:00')
+                        ->required()
+                        ->before('close_time')
+                        ->validationMessages([
+                            'required' => 'Jam buka harus diisi',
+                            'before' => 'Jam buka harus lebih awal dari jam tutup'
+                        ]),
+
+                    TimePicker::make('close_time')
+                        ->label('Jam Tutup')
+                        ->default('15:00:00')
+                        ->required()
+                        ->after('open_time')
+                        ->validationMessages([
+                            'required' => 'Jam tutup harus diisi',
+                            'after' => 'Jam tutup harus lebih lambat dari jam buka'
+                        ]),
+                ])->columns(3)
         ]);
     }
 

@@ -25,27 +25,62 @@ class OrganizationStructureResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Nama')
-                    ->required(),
-                Forms\Components\TextInput::make('position_name')
-                    ->label('Nama Posisi')
-                    ->required(),
-                Forms\Components\Select::make('supervisor_id')
-                    ->label('Atasan')
-                    ->relationship('supervisor', 'position_name')
-                    ->nullable(),
-                Forms\Components\Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->nullable(),
-                Forms\Components\TextInput::make('level')
-                    ->label('Level')
-                    ->type('number')
-                    ->default(0),
-                Forms\Components\TextInput::make('order')
-                    ->label('Urutan')
-                    ->type('number')
-                    ->default(0),
+                Forms\Components\Section::make('Informasi Utama')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama')
+                            ->required()
+                            ->maxLength(255)
+                            ->validationMessages([
+                                'required' => 'Nama harus diisi',
+                                'max' => 'Nama maksimal 255 karakter',
+                            ]),
+                        Forms\Components\TextInput::make('position_name')
+                            ->label('Nama Posisi')
+                            ->required()
+                            ->maxLength(255)
+                            ->validationMessages([
+                                'required' => 'Nama posisi harus diisi',
+                                'max' => 'Nama posisi maksimal 255 karakter',
+                            ]),
+                        Forms\Components\Select::make('supervisor_id')
+                            ->label('Atasan')
+                            ->relationship('supervisor', 'position_name')
+                            ->searchable()
+                            ->nullable()
+                            ->validationMessages([
+                                'exists' => 'Atasan yang dipilih tidak valid',
+                            ])
+                            ->helperText('Biarkan kosong jika tidak memiliki atasan'),
+                    ]),
+                Forms\Components\Section::make('Informasi Tambahan')
+                    ->schema([
+                        Forms\Components\Textarea::make('description')
+                            ->label('Deskripsi')
+                            ->nullable()
+                            ->maxLength(1000)
+                            ->validationMessages([
+                                'max' => 'Deskripsi maksimal 1000 karakter',
+                            ]),
+                        Forms\Components\Group::make([
+                            Forms\Components\TextInput::make('level')
+                                ->label('Level')
+                                ->type('number')
+                                ->default(0)
+                                ->validationMessages([
+                                    'min' => 'Level minimal 0',
+                                    'numeric' => 'Level harus berupa angka',
+                                ]),
+                            Forms\Components\TextInput::make('order')
+                                ->label('Urutan')
+                                ->type('number')
+                                ->default(0)
+                                ->validationMessages([
+                                    'min' => 'Urutan minimal 0',
+                                    'numeric' => 'Urutan harus berupa angka',
+                                ]),
+                        ])->columns(2),
+                    ]),
             ]);
     }
 

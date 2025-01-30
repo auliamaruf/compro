@@ -28,18 +28,11 @@
             <div class="container mx-auto px-4 py-4">
                 <div class="flex justify-between items-center">
                     <!-- Enhanced Logo Section -->
-                    <div class="flex items-center space-x-4">
-                        <div class="relative group">
-                            <div
-                                class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-500 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-300">
-                            </div>
-                            <img src="{{ asset('storage/' . $general->logo) }}" alt="{{ $general->nama_perusahaan }}"
-                                class="h-12 md:h-14 relative transform group-hover:scale-105 transition-all duration-300">
-                        </div>
+                    <div class="flex items-center space-x-3">
+                        <img src="{{ asset('storage/' . $general->logo) }}" alt="{{ $general->nama_perusahaan }}"
+                            class="h-10 md:h-12 hover:opacity-90 transition-all duration-200">
                         <div class="hidden md:block">
-                            <span
-                                class="font-bold text-2xl text-white tracking-wide">{{ $general->nama_perusahaan }}</span>
-                            <div class="h-0.5 w-0 bg-blue-300 transition-all duration-300 group-hover:w-full"></div>
+                            <span class="font-bold text-xl text-white">{{ $general->nama_perusahaan }}</span>
                         </div>
                     </div>
 
@@ -70,7 +63,7 @@
                             <div
                                 class="absolute left-0 mt-2 w-56 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
                                 <div class="p-2 bg-white rounded-xl shadow-xl backdrop-blur-sm border border-blue-50">
-                                    <a href="#visi-misi"
+                                    <a href="#visi-misi" onclick="event.preventDefault(); showTab('visi-misi')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -82,7 +75,7 @@
                                         </svg>
                                         <span class="font-medium">Visi dan Misi</span>
                                     </a>
-                                    <a href="#sejarah"
+                                    <a href="#sejarah" onclick="event.preventDefault(); showTab('sejarah')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -91,7 +84,7 @@
                                         </svg>
                                         <span class="font-medium">Sejarah Perusahaan</span>
                                     </a>
-                                    <a href="#struktur"
+                                    <a href="#struktur" onclick="event.preventDefault(); showTab('struktur')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -101,7 +94,7 @@
                                         </svg>
                                         <span class="font-medium">Struktur Organisasi</span>
                                     </a>
-                                    <a href="#cabang"
+                                    <a href="#cabang" onclick="event.preventDefault(); showTab('cabang')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">

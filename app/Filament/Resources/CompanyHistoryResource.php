@@ -30,16 +30,48 @@ class CompanyHistoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title')
-                    ->label('Judul')
-                    ->required(),
-                Forms\Components\Textarea::make('description')
-                    ->label('Deskripsi')
-                    ->required(),
-                Forms\Components\TextInput::make('year')
-                    ->label('Tahun')
-                    ->type('number')
-                    ->required(),
+                Forms\Components\Section::make('Company History Details')
+                    ->schema([
+                        Forms\Components\Group::make([
+                            Forms\Components\TextInput::make('year')
+                                ->label('Tahun')
+                                ->type('number')
+                                ->required()
+                                ->maxValue(date('Y')),
+                            Forms\Components\TextInput::make('title')
+                                ->label('Judul')
+                                ->required()
+                                ->maxLength(255)
+                                ->minLength(3)
+                                ->unique(ignoreRecord: true)
+                                ->validationMessages([
+                                    'required' => 'Judul harus diisi',
+                                    'max' => 'Judul maksimal 255 karakter',
+                                    'min' => 'Judul minimal 3 karakter',
+                                    'unique' => 'Judul sudah ada',
+                                ]),
+                        ])->columns(2),
+                        Forms\Components\RichEditor::make('description')
+                            ->label('Deskripsi')
+                            ->required()
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'underline',
+                                'strike',
+                                'bulletList',
+                                'orderedList',
+                                'link',
+                                'undo',
+                                'redo',
+                            ])
+                            ->maxLength(65535)
+                            ->validationMessages([
+                                'required' => 'Deskripsi harus diisi',
+                                'max' => 'Deskripsi terlalu panjang',
+                            ])
+                    ])
+                    ->columns(1)
             ]);
     }
 

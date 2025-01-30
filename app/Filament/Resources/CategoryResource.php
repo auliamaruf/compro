@@ -20,12 +20,16 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name') // Nama kategori
-                    ->label('Nama Kategori')
-                    ->required(),
-                Forms\Components\TextArea::make('description') // Deskripsi kategori
-                    ->label('Deskripsi')
-                    ->nullable(),
+                Forms\Components\Section::make('Category Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('name') // Nama kategori
+                            ->label('Nama Kategori')
+                            ->required(),
+                        Forms\Components\TextArea::make('description') // Deskripsi kategori
+                            ->label('Deskripsi')
+                            ->nullable(),
+                    ])
+                    ->columns(1),
             ]);
     }
 
@@ -33,10 +37,17 @@ class CategoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('description')->limit(50),
-                Tables\Columns\TextColumn::make('created_at')->label('Tanggal Dibuat')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->label('Tanggal Diperbarui')->dateTime(),
+                Tables\Columns\TextColumn::make('name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('description')
+                    ->limit(50),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Tanggal Dibuat')
+                    ->dateTime(),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Tanggal Diperbarui')
+                    ->dateTime(),
             ]);
     }
 

@@ -15,6 +15,7 @@ class CreateBranchProfilesTable extends Migration
             $table->text('branch_address'); // Alamat
             $table->string('branch_phone')->nullable(); // Telepon
             $table->string('branch_email')->nullable(); // Email
+            $table->text('google_maps_link')->nullable(); // Link Google Maps
             $table->timestamps(); // Tanggal pembuatan dan pembaruan
         });
     }

@@ -1,4 +1,3 @@
-<!-- Hero Section with Slider -->
 @php
     $banners = \App\Models\HeroBanner::getActiveBanners();
 @endphp
@@ -24,7 +23,7 @@
                             @if ($banner->button_text && $banner->button_link)
                                 <div class="flex space-x-4">
                                     <a href="{{ $banner->button_link }}"
-                                        class="px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
+                                        class="px-8 py-3 bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-colors duration-300 shadow-lg hover:shadow-xl">
                                         {{ $banner->button_text }}
                                     </a>
                                 </div>

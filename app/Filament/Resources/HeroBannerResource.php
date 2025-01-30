@@ -40,6 +40,10 @@ class HeroBannerResource extends Resource
                         Forms\Components\FileUpload::make('image_path')
                             ->label('Gambar Banner')
                             ->image()
+                            ->imageEditor()
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('1920')
+                            ->imageResizeTargetHeight('1080')
                             ->maxSize(2048)
                             ->directory('hero-banners')
                             ->required(),

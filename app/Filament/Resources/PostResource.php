@@ -25,48 +25,133 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('title') // Judul posting
-                    ->label('Judul Posting')
-                    ->required(),
-                Forms\Components\Select::make('category_id') // Pilih kategori
-                    ->label('Kategori')
-                    ->options(Category::all()->pluck('name', 'id'))
-                    ->required(),
-                Forms\Components\RichEditor::make('body') // Konten artikel
-                    ->label('Konten')
-                    ->required(),
-                Forms\Components\FileUpload::make('image') // Upload gambar
-                    ->label('Gambar')
-                    ->image() // Hanya menerima gambar
-                    ->nullable() // Foto bersifat opsional
-                    ->disk('public') // Tentukan disk penyimpanan (public storage)
-                    ->directory('posts/images') // Direktori untuk gambar
-                    ->maxSize(5120), // Ukuran maksimal 5MB
-                Forms\Components\Select::make('author_id') // Pilih author
-                    ->label('Author')
-                    ->options(\App\Models\User::all()->pluck('name', 'id'))
-                    ->required(),
+                Forms\Components\Section::make('Post Details')
+                    ->description('Enter the main details of the post')
+                    ->schema([
+                        Forms\Components\TextInput::make('title')
+                            ->label('Judul Posting')
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignorable: fn($record) => $record)
+                            ->live(onBlur: true)
+                            ->afterStateUpdated(fn($state, Forms\Set $set) =>
+                            $set('slug', \Str::slug($state)))
+                            ->validationMessages([
+                                'required' => 'Judul posting wajib diisi',
+                                'unique' => 'Judul posting sudah ada',
+                            ]),
+                        Forms\Components\Select::make('category_id')
+                            ->label('Kategori')
+                            ->options(Category::all()->pluck('name', 'id'))
+                            ->required()
+                            ->searchable()
+                            ->preload()
+                            ->validationMessages([
+                                'required' => 'Kategori wajib dipilih',
+                            ]),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Content')
+                    ->description('Add the post content and image')
+                    ->schema([
+                        Forms\Components\RichEditor::make('body')
+                            ->label('Konten')
+                            ->required()
+                            ->toolbarButtons([
+                                'bold',
+                                'italic',
+                                'underline',
+                                'link',
+                                'bulletList',
+                                'orderedList',
+                                'h2',
+                                'h3',
+                            ])
+                            ->validationMessages([
+                                'required' => 'Konten wajib diisi',
+                            ]),
+                        Forms\Components\FileUpload::make('image')
+                            ->label('Gambar')
+                            ->image()
+                            ->nullable()
+                            ->disk('public')
+                            ->directory('posts/images')
+                            ->maxSize(5120)
+                            ->imageResizeMode('cover')
+                            ->imageCropAspectRatio('16:9')
+                            ->imageResizeTargetWidth('1920')
+                            ->imageResizeTargetHeight('1080')
+                            ->validationMessages([
+                                'image' => 'File harus berupa gambar',
+                                'max' => 'Ukuran file maksimal 5MB',
+                            ]),
+                    ]),
+
+                Forms\Components\Section::make('Publishing')
+                    ->description('Set the author and publishing details')
+                    ->schema([
+                        Forms\Components\Select::make('author_id')
+                            ->label('Author')
+                            ->options(\App\Models\User::all()->pluck('name', 'id'))
+                            ->required()
+                            ->searchable()
+                            ->preload()
+                            ->validationMessages([
+                                'required' => 'Author wajib dipilih',
+                            ]),
+                    ]),
             ]);
     }
-    
+
 
     public static function table(Table $table): Table
     {
         return $table
-        ->columns([
-                Tables\Columns\TextColumn::make('title')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('category.name')->label('Kategori')->sortable(),
-                Tables\Columns\TextColumn::make('author.name')->label('Author')->sortable(),
-                Tables\Columns\ImageColumn::make('image') // Menampilkan gambar
+            ->columns([
+                Tables\Columns\TextColumn::make('title')
+                    ->sortable()
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('category.name')
+                    ->label('Kategori')
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('author.name')
+                    ->label('Author')
+                    ->sortable(),
+
+                Tables\Columns\ImageColumn::make('image')
                     ->label('Foto')
                     ->disk('public')
-                    ->url(fn (Post $record) => $record->image ? Storage::url($record->image) : null), // Menampilkan URL gambar
-                Tables\Columns\TextColumn::make('created_at')->label('Tanggal Dibuat')->dateTime(),
-                Tables\Columns\TextColumn::make('updated_at')->label('Tanggal Diperbarui')->dateTime(),
-                Tables\Columns\TextColumn::make('deleted_at')->label('Tanggal Dihapus')->dateTime(),
+                    ->url(fn(Post $record) => $record->image ? Storage::url($record->image) : null),
+
+                Tables\Columns\TextColumn::make('created_at')
+                    ->label('Tanggal Dibuat')
+                    ->dateTime(),
+
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Tanggal Diperbarui')
+                    ->dateTime(),
+
+                Tables\Columns\TextColumn::make('deleted_at')
+                    ->label('Tanggal Dihapus')
+                    ->dateTime(),
             ])
             ->filters([
                 //
+            ])
+            ->filters([
+                Tables\Filters\SelectFilter::make('category')
+                    ->relationship('category', 'name')
+                    ->label('Filter by Category')
+                    ->multiple()
+                    ->preload(),
+                Tables\Filters\SelectFilter::make('author')
+                    ->relationship('author', 'name')
+                    ->label('Filter by Author')
+                    ->multiple()
+                    ->preload(),
+                Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
