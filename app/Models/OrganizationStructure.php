@@ -10,9 +10,12 @@ class OrganizationStructure extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'position_name',
         'supervisor_id',
         'description',
+        'level',
+        'order',
     ];
 
     // Relasi ke supervisor
@@ -24,6 +27,12 @@ class OrganizationStructure extends Model
     // Relasi ke bawahan (subordinate)
     public function subordinates()
     {
-        return $this->hasMany(OrganizationStructure::class, 'supervisor_id');
+        return $this->hasMany(OrganizationStructure::class, 'supervisor_id')->orderBy('order');
+    }
+
+    // Scope untuk mendapatkan level teratas (Direktur Utama)
+    public function scopeTopLevel($query)
+    {
+        return $query->whereNull('supervisor_id');
     }
 }

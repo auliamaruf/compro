@@ -9,8 +9,6 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Widgets\Timeline;
-use Filament\Widgets\TimelineItem;
 
 class OrganizationStructureResource extends Resource
 {
@@ -27,6 +25,9 @@ class OrganizationStructureResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\TextInput::make('name')
+                    ->label('Nama')
+                    ->required(),
                 Forms\Components\TextInput::make('position_name')
                     ->label('Nama Posisi')
                     ->required(),
@@ -35,8 +36,16 @@ class OrganizationStructureResource extends Resource
                     ->relationship('supervisor', 'position_name')
                     ->nullable(),
                 Forms\Components\Textarea::make('description')
-                    ->label('Deskripsi Posisi')
+                    ->label('Deskripsi')
                     ->nullable(),
+                Forms\Components\TextInput::make('level')
+                    ->label('Level')
+                    ->type('number')
+                    ->default(0),
+                Forms\Components\TextInput::make('order')
+                    ->label('Urutan')
+                    ->type('number')
+                    ->default(0),
             ]);
     }
 
@@ -44,26 +53,38 @@ class OrganizationStructureResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nama')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('position_name')
-                    ->label('Nama Posisi'),
+                    ->label('Nama Posisi')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('supervisor.position_name')
                     ->label('Atasan')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->label('Deskripsi')
-                    ->limit(50),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->label('Dibuat Pada')
-                    ->dateTime()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('level')
+                    ->label('Level'),
+                Tables\Columns\TextColumn::make('order')
+                    ->label('Urutan'),
             ])
+            ->defaultSort('level', 'asc')
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
+            ])
+            ->bulkActions([
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
+    }
+
+    public static function getRelations(): array
+    {
+        return [
+            //
+        ];
     }
 
     public static function getPages(): array
