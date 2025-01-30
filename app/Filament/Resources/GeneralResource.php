@@ -24,63 +24,129 @@ class GeneralResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Grid::make(2)
+                Forms\Components\Section::make('Informasi Perusahaan')
                     ->schema([
-                        Forms\Components\FileUpload::make('logo')
-                            ->label('Logo Perusahaan')
-                            ->image()
-                            ->directory('company-logos')
-                            ->maxSize(2048),
-                        Forms\Components\TextInput::make('nama_perusahaan')
-                            ->label('Nama Perusahaan')
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\FileUpload::make('logo')
+                                    ->label('Logo Perusahaan')
+                                    ->image()
+                                    ->directory('company-logos')
+                                    ->maxSize(2048)
+                                    ->imageResizeMode('cover')
+                                    ->imageCropAspectRatio('1:1')
+                                    ->imageResizeTargetWidth('300')
+                                    ->imageResizeTargetHeight('300')
+                                    ->helperText('Format: JPG, PNG. Maksimal 2MB')
+                                    ->validationMessages([
+                                        'image' => 'File harus berupa gambar',
+                                        'max' => 'Ukuran file maksimal 2MB',
+                                    ]),
+                                Forms\Components\TextInput::make('nama_perusahaan')
+                                    ->label('Nama Perusahaan')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'required' => 'Nama perusahaan wajib diisi',
+                                        'max' => 'Nama perusahaan maksimal 255 karakter',
+                                    ]),
+                            ]),
+                        Forms\Components\Textarea::make('alamat')
+                            ->label('Alamat')
                             ->required()
-                            ->maxLength(255),
+                            ->columnSpanFull()
+                            ->validationMessages([
+                                'required' => 'Alamat wajib diisi',
+                            ]),
                     ]),
-                Forms\Components\Textarea::make('alamat')
-                    ->label('Alamat')
-                    ->columnSpanFull(),
-                Forms\Components\Grid::make(2)
+
+                Forms\Components\Section::make('Kontak')
                     ->schema([
-                        Forms\Components\TextInput::make('telepon')
-                            ->label('Telepon')
-                            ->tel()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('email')
-                            ->label('Email')
-                            ->email()
-                            ->maxLength(255),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('telepon')
+                                    ->label('Telepon')
+                                    ->tel()
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'required' => 'Nomor telepon wajib diisi',
+                                        'max' => 'Nomor telepon maksimal 255 karakter',
+                                    ]),
+                                Forms\Components\TextInput::make('email')
+                                    ->label('Email')
+                                    ->email()
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'required' => 'Email wajib diisi',
+                                        'email' => 'Format email tidak valid',
+                                        'max' => 'Email maksimal 255 karakter',
+                                    ]),
+                            ]),
                     ]),
-                Forms\Components\Grid::make(2)
+
+                Forms\Components\Section::make('Media Sosial')
                     ->schema([
-                        Forms\Components\TextInput::make('sosial_media_1')
-                            ->label('Sosial Media 1')
-                            ->url()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('sosial_media_2')
-                            ->label('Sosial Media 2')
-                            ->url()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('sosial_media_3')
-                            ->label('Sosial Media 3')
-                            ->url()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('sosial_media_4')
-                            ->label('Sosial Media 4')
-                            ->url()
-                            ->maxLength(255),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('sosial_media_1')
+                                    ->label('Instagram')
+                                    ->url()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'url' => 'Format URL tidak valid',
+                                        'max' => 'URL maksimal 255 karakter',
+                                    ]),
+                                Forms\Components\TextInput::make('sosial_media_2')
+                                    ->label('Twitter')
+                                    ->url()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'url' => 'Format URL tidak valid',
+                                        'max' => 'URL maksimal 255 karakter',
+                                    ]),
+                                Forms\Components\TextInput::make('sosial_media_3')
+                                    ->label('Facebook')
+                                    ->url()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'url' => 'Format URL tidak valid',
+                                        'max' => 'URL maksimal 255 karakter',
+                                    ]),
+                                Forms\Components\TextInput::make('sosial_media_4')
+                                    ->label('Youtube')
+                                    ->url()
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'url' => 'Format URL tidak valid',
+                                        'max' => 'URL maksimal 255 karakter',
+                                    ]),
+                            ]),
                     ]),
-                Forms\Components\Textarea::make('deskripsi')
-                    ->label('Deskripsi')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('visi')
-                    ->label('Visi')
-                    ->columnSpanFull(),
-                Forms\Components\Textarea::make('misi')
-                    ->label('Misi')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('jam_operasional')
-                    ->label('Jam Operasional')
-                    ->maxLength(255),
+
+                Forms\Components\Section::make('Profil Perusahaan')
+                    ->schema([
+                        Forms\Components\Textarea::make('deskripsi')
+                            ->label('Deskripsi')
+                            ->required()
+                            ->columnSpanFull()
+                            ->validationMessages([
+                                'required' => 'Deskripsi wajib diisi',
+                            ]),
+                        Forms\Components\Textarea::make('visi')
+                            ->label('Visi')
+                            ->columnSpanFull()
+                            ->validationMessages([
+                                'required' => 'Visi wajib diisi',
+                            ]),
+                        Forms\Components\Textarea::make('misi')
+                            ->label('Misi')
+                            ->columnSpanFull()
+                            ->validationMessages([
+                                'required' => 'Misi wajib diisi',
+                            ]),
+                    ]),
             ]);
     }
 
@@ -88,30 +154,38 @@ class GeneralResource extends Resource
     {
         return $table
             ->columns([
+                // Company Information
                 Tables\Columns\ImageColumn::make('logo')
                     ->label('Logo Perusahaan')
                     ->square(),
                 Tables\Columns\TextColumn::make('nama_perusahaan')
                     ->label('Nama Perusahaan')
-                    ->searchable(),
+                    ->searchable()
+                    ->sortable(),
+
+                // Contact Information
                 Tables\Columns\TextColumn::make('telepon')
                     ->label('Telepon')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->label('Email')
                     ->searchable(),
+
+                // Social Media
                 Tables\Columns\TextColumn::make('sosial_media_1')
-                    ->label('Sosial Media 1')
+                    ->label('Instagram')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sosial_media_2')
-                    ->label('Sosial Media 2')
+                    ->label('Twitter')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sosial_media_3')
-                    ->label('Sosial Media 3')
+                    ->label('Facebook')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sosial_media_4')
-                    ->label('Sosial Media 4')
+                    ->label('Youtube')
                     ->searchable(),
+
+                // Timestamps
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Dibuat Pada')
                     ->dateTime()
@@ -124,7 +198,33 @@ class GeneralResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                // Tambahkan filter jika diperlukan
+                Tables\Filters\TernaryFilter::make('has_logo')
+                    ->label('Memiliki Logo')
+                    ->placeholder('Semua')
+                    ->trueLabel('Dengan Logo')
+                    ->falseLabel('Tanpa Logo')
+                    ->queries(
+                        true: fn(Builder $query) => $query->whereNotNull('logo'),
+                        false: fn(Builder $query) => $query->whereNull('logo'),
+                    ),
+                Tables\Filters\SelectFilter::make('sosial_media')
+                    ->label('Social Media')
+                    ->multiple()
+                    ->options([
+                        'instagram' => 'Instagram',
+                        'twitter' => 'Twitter',
+                        'facebook' => 'Facebook',
+                        'youtube' => 'Youtube',
+                    ])
+                    ->query(function (Builder $query, array $data) {
+                        return $query->when(
+                            $data['values'],
+                            fn(Builder $query) => $query->whereNotNull('sosial_media_1')
+                                ->orWhereNotNull('sosial_media_2')
+                                ->orWhereNotNull('sosial_media_3')
+                                ->orWhereNotNull('sosial_media_4')
+                        );
+                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

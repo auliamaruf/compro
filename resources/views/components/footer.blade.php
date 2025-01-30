@@ -153,6 +153,12 @@
                 </div>
 
                 <!-- Operating Hours -->
+                @php
+                    $operatingHours = \App\Models\OperatingHour::orderByRaw(
+                        "FIELD(day, 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu')",
+                    )->get();
+                @endphp
+
                 <div class="transform hover:-translate-y-1 transition-transform duration-300">
                     <h4 class="font-bold text-lg md:text-xl text-white mb-6 flex items-center space-x-2">
                         <span class="w-8 h-0.5 bg-blue-400"></span>
@@ -168,8 +174,14 @@
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <div class="flex-grow">
-                                {!! nl2br(e($general->jam_operasional)) !!}
+                            <div class="flex-grow space-y-2">
+                                @foreach ($operatingHours as $hours)
+                                    <div class="flex justify-between items-center">
+                                        <span class="font-medium">{{ $hours->day }}</span>
+                                        <span>{{ \Carbon\Carbon::parse($hours->open_time)->format('H:i') }} -
+                                            {{ \Carbon\Carbon::parse($hours->close_time)->format('H:i') }}</span>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
