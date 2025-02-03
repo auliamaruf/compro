@@ -46,24 +46,21 @@
                         </a>
 
                         <!-- Enhanced Dropdown Menu -->
-                        <div class="relative group">
-                            <button
-                                class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                        <div class="relative group" tabindex="0">
+                            <button class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
                                 <span>Profil</span>
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
-                                <span
-                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
                             </button>
 
                             <!-- Enhanced Dropdown Content -->
-                            <div
-                                class="absolute left-0 mt-2 w-56 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                                <div class="p-2 bg-white rounded-xl shadow-xl backdrop-blur-sm border border-blue-50">
-                                    <a href="#visi-misi" onclick="event.preventDefault(); showTab('visi-misi')"
+                            <div class="absolute left-0 top-full w-64 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <!-- Gap Cover -->
+                                <div class="h-2 bg-transparent"></div>
+                                
+                                <div class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
+                                    <a href="#visi-misi" onclick="event.preventDefault(); showTab('profile-section', 'visi')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -75,7 +72,7 @@
                                         </svg>
                                         <span class="font-medium">Visi dan Misi</span>
                                     </a>
-                                    <a href="#sejarah" onclick="event.preventDefault(); showTab('sejarah')"
+                                    <a href="#sejarah" onclick="event.preventDefault(); showTab('profile-section', 'sejarah')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -84,7 +81,7 @@
                                         </svg>
                                         <span class="font-medium">Sejarah Perusahaan</span>
                                     </a>
-                                    <a href="#struktur" onclick="event.preventDefault(); showTab('struktur')"
+                                    <a href="#struktur" onclick="event.preventDefault(); showTab('profile-section', 'struktur')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -94,7 +91,7 @@
                                         </svg>
                                         <span class="font-medium">Struktur Organisasi</span>
                                     </a>
-                                    <a href="#cabang" onclick="event.preventDefault(); showTab('cabang')"
+                                    <a href="#cabang" onclick="event.preventDefault(); showTab('profile-section', 'cabang')"
                                         class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -116,36 +113,32 @@
                         </a>
 
                         <!-- Enhanced Pelanggan Dropdown -->
-                        <div class="relative group">
-                            <button
-                                class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                        <div class="relative group" tabindex="0">
+                            <button class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
                                 <span>Pelanggan</span>
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
                                 </svg>
-                                <span
-                                    class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
                             </button>
 
-                            <div
-                                class="absolute left-0 mt-2 w-56 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto">
-                                <div class="p-2 bg-white rounded-xl shadow-xl backdrop-blur-sm border border-blue-50">
-                                    <a href="#biaya-tetap"
-                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
-                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
+                            <!-- Enhanced Dropdown Content - Adjusted width -->
+                            <div class="absolute left-0 top-full w-48 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <!-- Gap Cover -->
+                                <div class="h-2 bg-transparent"></div>
+                                
+                                <div class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
+                                    <a href="#biaya-tetap" onclick="event.preventDefault(); showTab('profile-section', 'biaya-tetap')"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                                             </path>
                                         </svg>
                                         <span class="font-medium">Biaya Tetap</span>
                                     </a>
-                                    <a href="#tarif-dasar"
-                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
-                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
+                                    <a href="#tarif-dasar" onclick="event.preventDefault(); showTab('profile-section', 'tarif-dasar')"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
                                             </path>
@@ -237,7 +230,7 @@
                                         </button>
                                         <div
                                             class="dropdown-content mobile-dropdown-content hidden pl-12 pr-4 space-y-2 mt-2">
-                                            <a href="#visi-misi"
+                                            <a href="#visi-misi" onclick="event.preventDefault(); showTab('profile-section', 'visi')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -250,7 +243,7 @@
                                                 </svg>
                                                 <span>Visi dan Misi</span>
                                             </a>
-                                            <a href="#sejarah"
+                                            <a href="#sejarah" onclick="event.preventDefault(); showTab('profile-section', 'sejarah')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -260,7 +253,7 @@
                                                 </svg>
                                                 <span>Sejarah Perusahaan</span>
                                             </a>
-                                            <a href="#struktur"
+                                            <a href="#struktur" onclick="event.preventDefault(); showTab('profile-section', 'struktur')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -271,7 +264,7 @@
                                                 </svg>
                                                 <span>Struktur Organisasi</span>
                                             </a>
-                                            <a href="#cabang"
+                                            <a href="#cabang" onclick="event.preventDefault(); showTab('profile-section', 'cabang')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -318,7 +311,7 @@
                                             </svg>
                                         </button>
                                         <div class="dropdown-content hidden pl-12 pr-4 space-y-2 mt-2">
-                                            <a href="#biaya-tetap"
+                                            <a href="#biaya-tetap" onclick="event.preventDefault(); showTab('profile-section', 'biaya-tetap')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -329,7 +322,7 @@
                                                 </svg>
                                                 <span>Biaya Tetap</span>
                                             </a>
-                                            <a href="#tarif-dasar"
+                                            <a href="#tarif-dasar" onclick="event.preventDefault(); showTab('profile-section', 'tarif-dasar')"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
