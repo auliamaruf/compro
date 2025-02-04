@@ -14,6 +14,7 @@ class CreateGeneralsTable extends Migration
         Schema::create('generals', function (Blueprint $table) {
             $table->id();
             $table->string('logo')->nullable(); // Path logo perusahaan
+            $table->string('favicon')->nullable(); // Path logo perusahaan
             $table->string('nama_perusahaan');
             $table->text('alamat')->nullable();
             $table->string('telepon')->nullable();
