@@ -1,3 +1,4 @@
+// In js/components/profile-section.js
 function initializeTabSwitching() {
     return function switchTab(tabName, event) {
         // Update tab buttons
@@ -8,9 +9,11 @@ function initializeTabSwitching() {
         });
 
         // Update active tab
-        const currentTab = event.currentTarget;
-        currentTab.classList.remove('bg-blue-100', 'text-blue-600');
-        currentTab.classList.add('bg-blue-600', 'text-white');
+        const currentTab = event.currentTarget || document.querySelector(`[data-tab="${tabName}"]`);
+        if (currentTab) {
+            currentTab.classList.remove('bg-blue-100', 'text-blue-600');
+            currentTab.classList.add('bg-blue-600', 'text-white');
+        }
 
         // Update content with animation
         const contents = document.querySelectorAll('.tab-content');
@@ -28,3 +31,20 @@ function initializeTabSwitching() {
         }
     };
 }
+
+// Add navigation function
+function navigateToProfileTab(tabName) {
+    // First scroll to the profile section
+    const profileSection = document.querySelector('.container');
+    profileSection.scrollIntoView({ behavior: 'smooth' });
+
+    // Wait for scroll to complete before switching tab
+    setTimeout(() => {
+        const switchTabFunc = initializeTabSwitching();
+        switchTabFunc(tabName, { currentTarget: document.querySelector(`[data-tab="${tabName}"]`) });
+    }, 500);
+}
+
+// Make functions globally available
+window.switchTab = initializeTabSwitching();
+window.navigateToProfileTab = navigateToProfileTab;
