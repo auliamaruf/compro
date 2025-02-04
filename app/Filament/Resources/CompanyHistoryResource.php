@@ -20,7 +20,7 @@ class CompanyHistoryResource extends Resource
     // Mengubah grup navigasi menjadi 'Pengaturan'
     protected static ?string $navigationGroup = 'Pengaturan';
     protected static ?string $navigationLabel = 'Sejarah Perusahaan';
-    protected static ?string $navigationIcon = 'heroicon-o-clock';
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
     protected static ?int $navigationSort = 1;
 
     protected static ?string $label = 'Company History';

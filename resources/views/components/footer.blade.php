@@ -17,7 +17,7 @@
 
     <div class="relative pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-12 mb-12">
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
                 <!-- Contact Info -->
                 <div class="transform hover:-translate-y-1 transition-transform duration-300">
                     <h4 class="font-bold text-lg md:text-xl text-white mb-6 flex items-center space-x-2">
@@ -160,33 +160,20 @@
                 @endphp
 
                 <div class="transform hover:-translate-y-1 transition-transform duration-300">
-                    <h4 class="font-bold text-lg md:text-xl text-white mb-6 flex items-center space-x-2">
+                    <h4 class="font-bold text-lg md:text-xl text-white mb-3 flex items-center space-x-2">
                         <span class="w-8 h-0.5 bg-blue-400"></span>
                         <span>Jam Operasional</span>
                     </h4>
-                    <div class="text-white/90 space-y-2">
-                        <div class="flex items-center">
-                            <div
-                                class="flex-shrink-0 w-12 h-12 bg-blue-700/30 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-600/50 transition-colors duration-300">
-                                <svg class="w-6 h-6 text-blue-300" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
+                    <div class="text-white/90 space-y-1">
+                        @foreach ($operatingHours as $hours)
+                            <div class="flex items-center space-x-4 py-1 hover:bg-blue-600/20 rounded transition-colors duration-200">
+                                <span class="font-medium w-20">{{ $hours->day }}</span>
+                                <span>{{ \Carbon\Carbon::parse($hours->open_time)->format('H:i') }} -
+                                    {{ \Carbon\Carbon::parse($hours->close_time)->format('H:i') }}</span>
                             </div>
-                            <div class="flex-grow space-y-2">
-                                @foreach ($operatingHours as $hours)
-                                    <div class="flex justify-between items-center">
-                                        <span class="font-medium">{{ $hours->day }}</span>
-                                        <span>{{ \Carbon\Carbon::parse($hours->open_time)->format('H:i') }} -
-                                            {{ \Carbon\Carbon::parse($hours->close_time)->format('H:i') }}</span>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-
 
             </div>
             <!-- Copyright -->
