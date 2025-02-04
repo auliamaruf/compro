@@ -42,6 +42,20 @@ class GeneralResource extends Resource
                                         'image' => 'File harus berupa gambar',
                                         'max' => 'Ukuran file maksimal 2MB',
                                     ]),
+                                Forms\Components\FileUpload::make('favicon')
+                                    ->label('icon Perusahaan')
+                                    ->image()
+                                    ->directory('company-icons')
+                                    ->maxSize(2048)
+                                    ->imageResizeMode('icon')
+                                    ->imageCropAspectRatio('1:1')
+                                    ->imageResizeTargetWidth('300')
+                                    ->imageResizeTargetHeight('300')
+                                    ->helperText('Format: JPG, PNG. Maksimal 2MB')
+                                    ->validationMessages([
+                                        'image' => 'File harus berupa gambar',
+                                        'max' => 'Ukuran file maksimal 2MB',
+                                    ]),
                                 Forms\Components\TextInput::make('nama_perusahaan')
                                     ->label('Nama Perusahaan')
                                     ->required()

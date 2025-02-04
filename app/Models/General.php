@@ -11,6 +11,7 @@ class General extends Model
 
     protected $fillable = [
         'logo',
+        'favicon',
         'nama_perusahaan',
         'alamat',
         'telepon',
@@ -24,6 +25,6 @@ class General extends Model
         'visi',
         'misi',
         'jam_operasional',
-  
+
     ];
 }
