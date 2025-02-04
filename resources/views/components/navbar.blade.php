@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="{{ asset('css/components/profile-section.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/news-section.css') }}">
     <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-material-ui@4/material-ui.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 @php
@@ -149,12 +152,11 @@
                             </div>
                         </div>
 
-                        <a href="#kontak"
-                            class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                        <button onclick="openContactModal()" 
+                                class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
                             <span>Kontak</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 hover:w-full"></span>
-                        </a>
+                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
+                        </button>
                     </div>
 
                     <!-- Mobile Menu Structure -->
@@ -337,13 +339,11 @@
                                     </div>
 
                                     <!-- Kontak -->
-                                    <a href="#kontak"
-                                        class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                            </path>
+                                    <a href="#"
+                                       onclick="event.preventDefault(); openContactModal(); document.getElementById('mobile-menu').classList.add('hidden');"
+                                       class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                         </svg>
                                         <span class="font-medium">Kontak</span>
                                     </a>
@@ -355,3 +355,44 @@
             </div>
         </div>
     </nav>
+
+    <!-- Include Contact Modal -->
+    @include('components.contact-modal')
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize mobile menu functionality
+        // ...existing code...
+
+        // Make sure contact modal functions are globally available
+        window.openContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            requestAnimationFrame(() => {
+                backdrop.classList.add('opacity-100');
+                content.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
+            });
+        }
+
+        window.closeContactModal = function() {
+            const modal = document.getElementById('contact-modal');
+            const backdrop = document.getElementById('modal-backdrop');
+            const content = document.getElementById('modal-content');
+            
+            backdrop.classList.remove('opacity-100');
+            content.classList.add('scale-95', 'opacity-0', 'translate-y-4');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+    });
+    </script>
+</body>
+</html>
