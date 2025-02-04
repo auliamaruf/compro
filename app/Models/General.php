@@ -14,6 +14,7 @@ class General extends Model
         'nama_perusahaan',
         'alamat',
         'telepon',
+        'whatsapp',
         'email',
         'sosial_media_1',
         'sosial_media_2',

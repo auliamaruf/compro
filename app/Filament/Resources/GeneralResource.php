@@ -73,6 +73,16 @@ class GeneralResource extends Resource
                                         'required' => 'Nomor telepon wajib diisi',
                                         'max' => 'Nomor telepon maksimal 255 karakter',
                                     ]),
+                                Forms\Components\TextInput::make('whatsapp')
+                                    ->label('Whatsapp')
+                                    ->tel()
+                                    ->required()
+                                    ->placeholder('Contoh: 6281234567890')
+                                    ->maxLength(255)
+                                    ->validationMessages([
+                                        'required' => 'Nomor telepon wajib diisi',
+                                        'max' => 'Nomor telepon maksimal 15 karakter',
+                                    ]),
                                 Forms\Components\TextInput::make('email')
                                     ->label('Email')
                                     ->email()
@@ -166,6 +176,9 @@ class GeneralResource extends Resource
                 // Contact Information
                 Tables\Columns\TextColumn::make('telepon')
                     ->label('Telepon')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('whatsapp')
+                    ->label('Whatsapp')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->label('Email')

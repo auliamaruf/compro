@@ -8,4 +8,5 @@
 </div>
 @include('components.profile-section.index')
 @include('components.news-section')
+@include('components.floating-contact')
 @include('components.footer')

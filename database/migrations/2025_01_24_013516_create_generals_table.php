@@ -17,6 +17,7 @@ class CreateGeneralsTable extends Migration
             $table->string('nama_perusahaan');
             $table->text('alamat')->nullable();
             $table->string('telepon')->nullable();
+            $table->string('whatsapp')->nullable();
             $table->string('email')->nullable();
             $table->string('sosial_media_1')->nullable(); // URL Sosial Media 1
             $table->string('sosial_media_2')->nullable(); // URL Sosial Media 2

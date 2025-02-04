@@ -98,6 +98,5 @@
 
 </div>
 
-
-
+@include('components.floating-contact')
 @include('components.footer')
