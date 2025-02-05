@@ -1,5 +1,6 @@
 @php
     $posts = \App\Models\Post::with(['author', 'category'])
+        ->where('status', 'published')
         ->latest()
         ->take(3)
         ->get();

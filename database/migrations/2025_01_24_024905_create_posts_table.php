@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('image')->nullable(); // Kolom untuk menyimpan foto, nullable agar tidak wajib diisi
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
+            $table->enum('status', ['draft', 'scheduled', 'published'])->default('draft');
+            $table->timestamp('scheduled_publish_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
