@@ -32,61 +32,53 @@
             <!-- Form -->
             <form id="contact-form" class="p-6 space-y-4">
                 @csrf
-                <div class="space-y-4">
+                <div class="space-y-6">
                     <!-- Nama -->
-                    <div class="group">
-                        <div class="relative">
-                            <input type="text" name="name" required
-                                   class="peer w-full h-12 px-4 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                                   placeholder="Nama Lengkap">
-                            <label class="absolute left-4 -top-2 text-xs text-gray-600 transition-all 
-                                        peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base 
-                                        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">
-                                Nama Lengkap
-                            </label>
-                        </div>
+                    <div class="relative">
+                        <label for="name" class="absolute -top-2.5 left-2 bg-white px-2 text-sm text-gray-600">
+                            Nama Lengkap
+                        </label>
+                        <input type="text" 
+                               id="name"
+                               name="name" 
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300">
                     </div>
 
                     <!-- Email -->
-                    <div class="group">
-                        <div class="relative">
-                            <input type="email" name="email" required
-                                   class="peer w-full h-12 px-4 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                                   placeholder="Email">
-                            <label class="absolute left-4 -top-2 text-xs text-gray-600 transition-all 
-                                        peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base 
-                                        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">
-                                Email
-                            </label>
-                        </div>
+                    <div class="relative">
+                        <label for="email" class="absolute -top-2.5 left-2 bg-white px-2 text-sm text-gray-600">
+                            Email
+                        </label>
+                        <input type="email" 
+                               id="email"
+                               name="email" 
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300">
                     </div>
 
                     <!-- Subjek -->
-                    <div class="group">
-                        <div class="relative">
-                            <input type="text" name="subject" required
-                                   class="peer w-full h-12 px-4 border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none transition-colors duration-300"
-                                   placeholder="Subjek">
-                            <label class="absolute left-4 -top-2 text-xs text-gray-600 transition-all 
-                                        peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base 
-                                        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">
-                                Subjek
-                            </label>
-                        </div>
+                    <div class="relative">
+                        <label for="subject" class="absolute -top-2.5 left-2 bg-white px-2 text-sm text-gray-600">
+                            Subjek
+                        </label>
+                        <input type="text" 
+                               id="subject"
+                               name="subject" 
+                               required
+                               class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300">
                     </div>
 
                     <!-- Pesan -->
-                    <div class="group">
-                        <div class="relative mt-2">
-                            <textarea name="message" rows="4" required
-                                      class="peer w-full p-4 border-2 border-gray-300 rounded-lg text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"
-                                      placeholder="Pesan"></textarea>
-                            <label class="absolute left-4 -top-2 text-xs text-gray-600 bg-white px-2 transition-all
-                                        peer-placeholder-shown:top-4 peer-placeholder-shown:text-base 
-                                        peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-600">
-                                Pesan
-                            </label>
-                        </div>
+                    <div class="relative">
+                        <label for="message" class="absolute -top-2.5 left-2 bg-white px-2 text-sm text-gray-600">
+                            Pesan
+                        </label>
+                        <textarea id="message"
+                                 name="message" 
+                                 rows="4" 
+                                 required
+                                 class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"></textarea>
                     </div>
                 </div>
 

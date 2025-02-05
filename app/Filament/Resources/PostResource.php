@@ -99,7 +99,29 @@ class PostResource extends Resource
                             ->validationMessages([
                                 'required' => 'Author wajib dipilih',
                             ]),
-                    ]),
+                        Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'draft' => 'Draft',
+                                'scheduled' => 'Jadwalkan',
+                                'published' => 'Publikasikan'
+                            ])
+                            ->default('draft')
+                            ->required()
+                            ->live()
+                            ->validationMessages([
+                                'required' => 'Status wajib dipilih',
+                            ]),
+                        Forms\Components\DateTimePicker::make('scheduled_publish_at')
+                            ->label('Waktu Publikasi')
+                            ->required(fn (Forms\Get $get) => $get('status') === 'scheduled')
+                            ->visible(fn (Forms\Get $get) => $get('status') === 'scheduled')
+                            ->minDate(now()) // Ganti future() dengan minDate(now())
+                            ->validationMessages([
+                                'required' => 'Waktu publikasi wajib diisi untuk post terjadwal',
+                                'min' => 'Waktu publikasi harus di masa depan',
+                            ]),
+                    ])->columns(2),
             ]);
     }
 
@@ -136,6 +158,18 @@ class PostResource extends Resource
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->label('Tanggal Dihapus')
                     ->dateTime(),
+
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'draft' => 'gray',
+                        'scheduled' => 'warning',
+                        'published' => 'success',
+                    }),
+                Tables\Columns\TextColumn::make('scheduled_publish_at')
+                    ->label('Jadwal Publikasi')
+                    ->dateTime()
+                    ->sortable(),
             ])
             ->filters([
                 //

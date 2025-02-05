@@ -7,10 +7,8 @@
     <title>{{ $post->title }}</title>
     @vite('resources/css/app.css')
 </head>
-
+@include('components.navbar')
 <body class="bg-gray-50">
-    @include('components.navbar')
-
     <div class="relative bg-gradient-to-br from-blue-600 to-blue-800 h-[250px]">
         <div class="absolute inset-0">
             <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}"
