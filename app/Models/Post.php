@@ -12,11 +12,7 @@ class Post extends Model
 
     protected $fillable = [
         'title', 'body', 'image', 'category_id', 'author_id',
-        'status', 'scheduled_publish_at'
-    ];
-
-    protected $casts = [
-        'scheduled_publish_at' => 'datetime'
+        'status'
     ];
 
     // Relasi dengan kategori
@@ -31,25 +27,9 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    // Add this method to the Post model
+    // Simplified published scope
     public function scopePublished($query)
     {
-        return $query->where(function($query) {
-            $query->where('status', 'published')
-                ->orWhere(function($query) {
-                    $query->where('status', 'scheduled')
-                          ->where('scheduled_publish_at', '<=', now());
-                });
-        });
-    }
-
-    protected static function booted()
-    {
-        static::saving(function ($post) {
-            // Auto publish scheduled posts that have reached their publication date
-            if ($post->status === 'scheduled' && $post->scheduled_publish_at <= now()) {
-                $post->status = 'published';
-            }
-        });
+        return $query->where('status', 'published');
     }
 }
