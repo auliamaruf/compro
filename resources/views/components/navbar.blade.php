@@ -133,6 +133,45 @@
                             </div>
                         </div>
 
+                        <!-- Add Water Sources Menu -->
+                        <div class="relative group" tabindex="0">
+                            <button
+                                class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                                <span>Sumber Air</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-0 top-full w-64 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <div class="h-2 bg-transparent"></div>
+                                <div
+                                    class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
+                                    <a href="{{ route('water-source.index') }}"
+                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                        </svg>
+                                        <span class="font-medium">Semua Sumber</span>
+                                    </a>
+                                    <a href="{{ route('water-source.active') }}"
+                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        <span class="font-medium">Sumber Aktif</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Pelanggan Dropdown -->
                         <div class="relative group" tabindex="0">
                             <button
@@ -375,6 +414,50 @@
                                                     </path>
                                                 </svg>
                                                 <span>Tarif Dasar</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Water Sources Mobile Menu -->
+                                    <div class="mobile-dropdown">
+                                        <button
+                                            class="w-full flex items-center justify-between p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                            <div class="flex items-center space-x-3">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                                </svg>
+                                                <span class="font-medium">Sumber Air</span>
+                                            </div>
+                                            <svg class="dropdown-arrow w-5 h-5 transition-transform duration-200"
+                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </button>
+                                        <div class="dropdown-content hidden pl-12 pr-4 space-y-2 mt-2">
+                                            <a href="{{ route('water-source.index') }}"
+                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                                <span>Semua Sumber</span>
+                                            </a>
+                                            <a href="{{ route('water-source.active') }}"
+                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                                <span>Sumber Aktif</span>
+                                            </a>
+                                            <div class="text-sm text-gray-300 px-4 pt-2">Tipe Sumber:</div>
+                                            <a href="{{ route('water-source.type', 'spring') }}"
+                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                                <span>Spring</span>
+                                            </a>
+                                            <a href="{{ route('water-source.type', 'well') }}"
+                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                                <span>Well</span>
+                                            </a>
+                                            <a href="{{ route('water-source.type', 'river') }}"
+                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                                <span>River</span>
                                             </a>
                                         </div>
                                     </div>
