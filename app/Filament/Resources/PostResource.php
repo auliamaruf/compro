@@ -4,7 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Post;
+use BezhanSalleh\FilamentShield\Contracts\HasShieldPermissions;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,12 +17,25 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
 use Filament\Forms\Components\FileUpload;
+use Illuminate\Support\Str;
 
-class PostResource extends Resource
+class PostResource extends Resource implements HasShieldPermissions
 {
     protected static ?string $model = Post::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-pencil-square';
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+            'publish'
+        ];
+    }
 
     public static function form(Forms\Form $form): Forms\Form
     {
@@ -38,13 +53,13 @@ class PostResource extends Resource
                                     ->unique(ignorable: fn($record) => $record)
                                     ->live(onBlur: true)
                                     ->afterStateUpdated(fn($state, Forms\Set $set) =>
-                                        $set('slug', \Str::slug($state)))
+                                    $set('slug', Str::slug($state)))
                                     ->validationMessages([
                                         'required' => 'Judul posting wajib diisi',
                                         'unique' => 'Judul posting sudah ada',
                                     ])
                                     ->columnSpanFull(),
-                                
+
                                 Forms\Components\Select::make('category_id')
                                     ->label('Kategori')
                                     ->options(Category::all()->pluck('name', 'id'))
@@ -160,7 +175,7 @@ class PostResource extends Resource
 
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
-                    ->color(fn (string $state): string => match ($state) {
+                    ->color(fn(string $state): string => match ($state) {
                         'draft' => 'gray',
                         'scheduled' => 'warning',
                         'published' => 'success',
