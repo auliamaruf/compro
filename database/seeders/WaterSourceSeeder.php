@@ -36,7 +36,7 @@ class WaterSourceSeeder extends Seeder
             [
                 'source_name' => 'Deep Well B',
                 'source_code' => 'WS002',
-                'source_type' => 'well',
+                'source_type' => 'bore_well', // Changed from 'well' to 'bore_well'
                 'source_status' => 'active',
                 'capacity_flow_lps' => 8.3,
                 'village' => 'Village Two',
@@ -60,7 +60,7 @@ class WaterSourceSeeder extends Seeder
                 'source_name' => 'River Source C',
                 'source_code' => 'WS003',
                 'source_type' => 'river',
-                'source_status' => 'maintenance',
+                'source_status' => 'under_maintenance', // Changed from 'maintenance' to 'under_maintenance'
                 'capacity_flow_lps' => 15.7,
                 'village' => 'Village Three',
                 'district' => 'District C',
