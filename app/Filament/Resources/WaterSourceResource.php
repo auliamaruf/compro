@@ -29,56 +29,114 @@ class WaterSourceResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('source_name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('source_code')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('source_type')
-                    ->required(),
-                Forms\Components\TextInput::make('source_status')
-                    ->required(),
-                Forms\Components\TextInput::make('capacity_flow_lps')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('village')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('district')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('city')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('province')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('latitude')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('longitude')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('elevation_masl')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('manager')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('exploration_year'),
-                Forms\Components\TextInput::make('operational_year'),
-                Forms\Components\Textarea::make('utilization_system')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('number_of_pumps')
-                    ->required()
-                    ->numeric()
-                    ->default(0),
-                Forms\Components\TextInput::make('ownership_status')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('notes')
-                    ->columnSpanFull(),
+                Forms\Components\Section::make('Basic Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('source_name')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Nama Sumber'),
+                        Forms\Components\TextInput::make('source_code')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Kode Sumber'),
+                        Forms\Components\Select::make('source_type')
+                            ->required()
+                            ->options([
+                                'spring' => 'Spring',
+                                'well' => 'Well',
+                                'river' => 'River',
+                                'lake' => 'Lake',
+                                'reservoir' => 'Reservoir'
+                            ])
+                            ->label('Tipe Sumber'),
+                        Forms\Components\Select::make('source_status')
+                            ->required()
+                            ->options([
+                                'active' => 'Active',
+                                'inactive' => 'Inactive',
+                                'maintenance' => 'Maintenance',
+                                'planning' => 'Planning'
+                            ])
+                            ->label('Status'),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Location Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('village')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Desa'),
+                        Forms\Components\TextInput::make('district')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Kecamatan'),
+                        Forms\Components\TextInput::make('city')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Kota'),
+                        Forms\Components\TextInput::make('province')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Provinsi'),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Technical Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('capacity_flow_lps')
+                            ->required()
+                            ->numeric()
+                            ->label('Kapasitas (L/s)')
+                            ->suffix('L/s'),
+                        Forms\Components\TextInput::make('latitude')
+                            ->required()
+                            ->numeric()
+                            ->label('Latitude'),
+                        Forms\Components\TextInput::make('longitude')
+                            ->required()
+                            ->numeric()
+                            ->label('Longitude'),
+                        Forms\Components\TextInput::make('elevation_masl')
+                            ->required()
+                            ->numeric()
+                            ->label('Elevasi (MASL)')
+                            ->suffix('m'),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Management Information')
+                    ->schema([
+                        Forms\Components\TextInput::make('manager')
+                            ->required()
+                            ->maxLength(255)
+                            ->label('Pengelola'),
+                        Forms\Components\TextInput::make('exploration_year')
+                            ->numeric()
+                            ->label('Tahun Eksplorasi'),
+                        Forms\Components\TextInput::make('operational_year')
+                            ->numeric()
+                            ->label('Tahun Operasional'),
+                        Forms\Components\Select::make('ownership_status')
+                            ->required()
+                            ->options([
+                                'Government' => 'Government',
+                                'Private' => 'Private',
+                                'Joint venture' => 'Joint Venture',
+                                'Public' => 'Public'
+                            ])
+                            ->label('Status Kepemilikan'),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Additional Information')
+                    ->schema([
+                        Forms\Components\Textarea::make('utilization_system')
+                            ->label('Sistem Pemanfaatan'),
+                        Forms\Components\TextInput::make('number_of_pumps')
+                            ->required()
+                            ->numeric()
+                            ->default(0)
+                            ->label('Jumlah Pompa'),
+                        Forms\Components\Textarea::make('notes')
+                            ->label('Catatan'),
+                    ])->columns(1),
             ]);
     }
 
