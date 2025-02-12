@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\FileUpload;
 
 class HeroBannerResource extends Resource
 {
@@ -46,7 +47,8 @@ class HeroBannerResource extends Resource
                             ->imageResizeTargetHeight('1080')
                             ->maxSize(2048)
                             ->directory('hero-banners')
-                            ->required(),
+                            ->required()
+                            ->optimize('webp'),
 
                         Forms\Components\TextInput::make('button_text')
                             ->label('Teks Button')

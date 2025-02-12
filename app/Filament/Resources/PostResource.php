@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Category;
+use Filament\Forms\Components\FileUpload;
 
 class PostResource extends Resource
 {
@@ -111,6 +112,7 @@ class PostResource extends Resource
                                     ->imageCropAspectRatio('16:9')
                                     ->imageResizeTargetWidth('1920')
                                     ->imageResizeTargetHeight('1080')
+                                    ->optimize('webp')
                                     ->validationMessages([
                                         'image' => 'File harus berupa gambar',
                                         'max' => 'Ukuran file maksimal 5MB',
