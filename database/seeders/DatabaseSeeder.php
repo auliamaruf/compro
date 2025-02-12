@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             BranchProfileSeeder::class,
             PostSeeder::class,
+            WaterSourceSeeder::class,  // Fixed class reference
         ]);
     }
 }

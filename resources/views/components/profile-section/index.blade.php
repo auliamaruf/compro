@@ -39,14 +39,6 @@
                 class="profile-tab px-4 md:px-6 py-2 md:py-2.5 rounded-lg text-sm md:text-base font-medium transition-all duration-300 bg-blue-100 text-blue-600 hover:bg-blue-200">
                 Cabang
             </button>
-            <button onclick="switchTab('biaya-tetap', event)" data-tab="biaya-tetap"
-                class="profile-tab px-4 md:px-6 py-2 md:py-2.5 rounded-lg text-sm md:text-base font-medium transition-all duration-300 bg-blue-100 text-blue-600 hover:bg-blue-200">
-                Biaya Tetap
-            </button>
-            <button onclick="switchTab('tarif-dasar', event)" data-tab="tarif-dasar"
-                class="profile-tab px-4 md:px-6 py-2 md:py-2.5 rounded-lg text-sm md:text-base font-medium transition-all duration-300 bg-blue-100 text-blue-600 hover:bg-blue-200">
-                Tarif Dasar
-            </button>
         </div>
 
         <!-- Tab Contents - Responsive Height -->
@@ -56,8 +48,6 @@
             @include('components.profile-section.sejarah')
             @include('components.profile-section.struktur')
             @include('components.profile-section.cabang')
-            @include('components.profile-section.biaya-tetap')
-            @include('components.profile-section.tarif-dasar')
         </div>
     </div>
 </section>

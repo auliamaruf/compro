@@ -34,16 +34,21 @@
                 <div class="flex justify-between items-center">
                     <!-- Enhanced Logo Section -->
                     <div class="flex items-center space-x-3">
-                        <img src="{{ asset('storage/' . $general->logo) }}" alt="{{ $general->nama_perusahaan }}"
-                            class="h-10 md:h-12 hover:opacity-90 transition-all duration-200">
+                        <a href="{{ url('/') }}">
+                            <img src="{{ asset('storage/' . $general->logo) }}" alt="{{ $general->nama_perusahaan }}"
+                                class="h-10 md:h-12 hover:opacity-90 transition-all duration-200">
+                        </a>
                         <div class="hidden md:block">
-                            <span class="font-bold text-xl text-white">{{ $general->nama_perusahaan }}</span>
+                            <a href="{{ url('/') }}"
+                                class="font-bold text-xl text-white hover:text-blue-200 transition-colors duration-300">
+                                {{ $general->nama_perusahaan }}
+                            </a>
                         </div>
                     </div>
 
                     <!-- Enhanced Desktop Menu -->
                     <div class="hidden md:flex space-x-6">
-                        <a href="#beranda"
+                        <a href="{{ url('/') }}"
                             class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
                             <span>Beranda</span>
                             <span
@@ -128,7 +133,7 @@
                             </div>
                         </div>
 
-                        <!-- Enhanced Pelanggan Dropdown -->
+                        <!-- Pelanggan Dropdown -->
                         <div class="relative group" tabindex="0">
                             <button
                                 class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
@@ -140,16 +145,12 @@
                                 </svg>
                             </button>
 
-                            <!-- Enhanced Dropdown Content - Adjusted width -->
                             <div
                                 class="absolute left-0 top-full w-48 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                                <!-- Gap Cover -->
                                 <div class="h-2 bg-transparent"></div>
-
                                 <div
                                     class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
-                                    <a href="#biaya-tetap"
-                                        onclick="event.preventDefault(); showTab('profile-section', 'biaya-tetap')"
+                                    <a href="{{ url('/biaya-tetap') }}"
                                         class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -159,8 +160,7 @@
                                         </svg>
                                         <span class="font-medium">Biaya Tetap</span>
                                     </a>
-                                    <a href="#tarif-dasar"
-                                        onclick="event.preventDefault(); showTab('profile-section', 'tarif-dasar')"
+                                    <a href="{{ url('/tarif-dasar') }}"
                                         class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
                                         <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -174,10 +174,11 @@
                             </div>
                         </div>
 
-                        <button onclick="openContactModal()" 
-                                class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                        <button onclick="openContactModal()"
+                            class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
                             <span>Kontak</span>
-                            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
+                            <span
+                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
                         </button>
                     </div>
 
@@ -332,7 +333,7 @@
                                         <span class="font-medium">Pelayanan</span>
                                     </a>
 
-                                    <!-- Pelanggan Dropdown -->
+                                    <!-- Mobile Menu - Pelanggan Dropdown -->
                                     <div class="mobile-dropdown">
                                         <button
                                             class="w-full flex items-center justify-between p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
@@ -344,7 +345,7 @@
                                                         d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                                                     </path>
                                                 </svg>
-                                                <span class="font-medium">Pelanggan</span>
+                                                <span class="font-medium">Tarif</span>
                                             </div>
                                             <svg class="dropdown-arrow w-5 h-5 transition-transform duration-200"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -353,8 +354,7 @@
                                             </svg>
                                         </button>
                                         <div class="dropdown-content hidden pl-12 pr-4 space-y-2 mt-2">
-                                            <a href="#biaya-tetap"
-                                                onclick="event.preventDefault(); showTab('profile-section', 'biaya-tetap')"
+                                            <a href="{{ url('/biaya-tetap') }}"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -365,8 +365,7 @@
                                                 </svg>
                                                 <span>Biaya Tetap</span>
                                             </a>
-                                            <a href="#tarif-dasar"
-                                                onclick="event.preventDefault(); showTab('profile-section', 'tarif-dasar')"
+                                            <a href="{{ url('/tarif-dasar') }}"
                                                 class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                                 <svg class="w-5 h-5 text-blue-300" fill="none"
                                                     stroke="currentColor" viewBox="0 0 24 24">
@@ -382,10 +381,13 @@
 
                                     <!-- Kontak -->
                                     <a href="#"
-                                       onclick="event.preventDefault(); openContactModal(); document.getElementById('mobile-menu').classList.add('hidden');"
-                                       class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                        onclick="event.preventDefault(); openContactModal(); document.getElementById('mobile-menu').classList.add('hidden');"
+                                        class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                            </path>
                                         </svg>
                                         <span class="font-medium">Kontak</span>
                                     </a>
@@ -402,39 +404,40 @@
     @include('components.contact-modal')
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Initialize mobile menu functionality
-        // ...existing code...
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize mobile menu functionality
+            // ...existing code...
 
-        // Make sure contact modal functions are globally available
-        window.openContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            const backdrop = document.getElementById('modal-backdrop');
-            const content = document.getElementById('modal-content');
-            
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-            
-            requestAnimationFrame(() => {
-                backdrop.classList.add('opacity-100');
-                content.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
-            });
-        }
+            // Make sure contact modal functions are globally available
+            window.openContactModal = function() {
+                const modal = document.getElementById('contact-modal');
+                const backdrop = document.getElementById('modal-backdrop');
+                const content = document.getElementById('modal-content');
 
-        window.closeContactModal = function() {
-            const modal = document.getElementById('contact-modal');
-            const backdrop = document.getElementById('modal-backdrop');
-            const content = document.getElementById('modal-content');
-            
-            backdrop.classList.remove('opacity-100');
-            content.classList.add('scale-95', 'opacity-0', 'translate-y-4');
-            
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-    });
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+
+                requestAnimationFrame(() => {
+                    backdrop.classList.add('opacity-100');
+                    content.classList.remove('scale-95', 'opacity-0', 'translate-y-4');
+                });
+            }
+
+            window.closeContactModal = function() {
+                const modal = document.getElementById('contact-modal');
+                const backdrop = document.getElementById('modal-backdrop');
+                const content = document.getElementById('modal-content');
+
+                backdrop.classList.remove('opacity-100');
+                content.classList.add('scale-95', 'opacity-0', 'translate-y-4');
+
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+        });
     </script>
 </body>
+
 </html>
