@@ -15,7 +15,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Category;
 use Filament\Forms\Components\FileUpload;
 use Illuminate\Support\Str;
 

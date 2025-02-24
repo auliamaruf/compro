@@ -4,7 +4,7 @@
     <div class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
     <div class="absolute bottom-0 left-0 w-24 h-24 bg-blue-50 rounded-full -ml-12 -mb-12"></div>
 
-    <div class="relative">
+    <div class="relative bg-white p-6 rounded-lg shadow-lg">
         <div class="flex flex-col md:flex-row items-start md:items-center gap-6 mb-6">
             <div
                 class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl flex items-center justify-center transform rotate-3">
