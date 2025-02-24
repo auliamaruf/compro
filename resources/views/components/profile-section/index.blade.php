@@ -43,11 +43,11 @@
 
         <!-- Tab Contents - Responsive Height -->
         <div class="max-w-4xl mx-auto h-[calc(100vh-280px)] md:h-[calc(100vh-400px)] overflow-y-auto px-2 md:px-4">
-            @include('components.profile-section.visi')
-            @include('components.profile-section.misi')
-            @include('components.profile-section.sejarah')
-            @include('components.profile-section.struktur')
-            @include('components.profile-section.cabang')
+            @include('components.profile-section.tabs.visi')
+            @include('components.profile-section.tabs.misi')
+            @include('components.profile-section.tabs.sejarah')
+            @include('components.profile-section.tabs.struktur')
+            @include('components.profile-section.tabs.cabang')
         </div>
     </div>
 </section>

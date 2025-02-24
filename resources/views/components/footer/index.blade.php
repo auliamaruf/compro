@@ -166,7 +166,8 @@
                     </h4>
                     <div class="text-white/90 space-y-1">
                         @foreach ($operatingHours as $hours)
-                            <div class="flex items-center space-x-4 py-1 hover:bg-blue-600/20 rounded transition-colors duration-200">
+                            <div
+                                class="flex items-center space-x-4 py-1 hover:bg-blue-600/20 rounded transition-colors duration-200">
                                 <span class="font-medium w-20">{{ $hours->day }}</span>
                                 <span>{{ \Carbon\Carbon::parse($hours->open_time)->format('H:i') }} -
                                     {{ \Carbon\Carbon::parse($hours->close_time)->format('H:i') }}</span>

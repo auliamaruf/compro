@@ -10,6 +10,6 @@ class GeneralController extends Controller
     public function show($id)
     {
         $company = General::find($id);
-        return view('components.navbar', compact('company'));
+        return view('components.navbar.index', compact('company'));
     }
 }

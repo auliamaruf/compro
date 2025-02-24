@@ -1,4 +1,4 @@
-@include('components.navbar')
+@include('components.navbar.index')
 
 <!-- Hero Section -->
 <div class="relative bg-gradient-to-br from-blue-600 to-blue-800 py-24 mt-16"> <!-- Tambahkan mt-16 -->
@@ -98,5 +98,5 @@
 
 </div>
 
-@include('components.floating-contact')
-@include('components.footer')
+@include('components.emails.contact')
+@include('components.footer.index')
