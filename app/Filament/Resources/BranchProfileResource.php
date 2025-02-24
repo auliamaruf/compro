@@ -126,7 +126,6 @@ class BranchProfileResource extends Resource
                     ->copyable()
                     ->openUrlInNewTab(),
 
-
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Tanggal Dibuat')
                     ->dateTime('d M Y H:i')
@@ -139,6 +138,11 @@ class BranchProfileResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
+            ->actions([
+                Tables\Actions\ViewAction::make(),
+                Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
+            ])
             ->filters([
                 // Filter bisa ditambahkan sesuai kebutuhan
             ]);
@@ -150,6 +154,7 @@ class BranchProfileResource extends Resource
             'index' => Pages\ListBranchProfiles::route('/'),
             'create' => Pages\CreateBranchProfile::route('/create'),
             'edit' => Pages\EditBranchProfile::route('/{record}/edit'),
+            'view' => Pages\ViewBranchProfile::route('/{record}'),
         ];
     }
 }

@@ -1,4 +1,4 @@
-<!-- Quick Action Cards -->
+{{-- <!-- Quick Action Cards -->
 <div class="container mx-auto px-4 -mt-16 relative z-10">
     <div class="grid md:grid-cols-2 gap-8">
         <!-- Card Pengecekan Rekening -->
@@ -157,4 +157,4 @@
             </form>
         </div>
     </div>
-</div>
+</div> --}}

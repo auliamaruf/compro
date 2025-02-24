@@ -484,7 +484,7 @@
     </nav>
 
     <!-- Include Contact Modal -->
-    @include('components.contact-modal')
+    @include('components.emails.contact')
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
