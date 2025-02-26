@@ -50,7 +50,7 @@
                         </div>
                         <p class="text-gray-600 mb-4 font-medium">{{ $biaya->sub_golongan }}</p>
                         <div class="flex justify-between items-center bg-blue-50 p-2 rounded">
-                            <span class="text-blue-700">Tarif Tetap</span>
+                            <span class="text-blue-700">Biaya Tetap</span>
                             <span class="font-bold text-blue-600">
                                 Rp {{ number_format($biaya->tarif, 0, ',', '.') }}
                             </span>

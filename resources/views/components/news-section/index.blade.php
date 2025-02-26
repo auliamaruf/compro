@@ -11,21 +11,13 @@
     <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)] opacity-25">
     </div>
 
-    <section class="container mx-auto py-16 px-4 relative">
+    <section class="container mx-auto py-8 px-4 relative">
         <!-- Main content wrapper with background -->
-        <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-[0_0_20px_-5px_rgba(0,0,0,0.2)]">
-            <!-- Decorative background -->
-            <div class="absolute inset-0 bg-gradient-to-b from-blue-50/50 to-white/50 rounded-3xl"></div>
-            <div class="absolute inset-0">
-                <div
-                    class="absolute inset-0 bg-[radial-gradient(#e1e1e1_1px,transparent_1px)] [background-size:16px_16px] opacity-20">
-                </div>
-            </div>
-
+        <div class="relative bg-white/70 backdrop-blur-sm rounded-3xl p-6 shadow-[0_0_20px_-5px_rgba(0,0,0,0.2)]">
             <!-- Content -->
             <div class="relative z-10">
                 <!-- Header Section -->
-                <div class="text-center mb-12 relative">
+                <div class="text-center mb-12 mt-6 relative">
 
                     <div class="relative z-10">
                         <h2 class="text-3xl md:text-4xl font-bold">
@@ -85,7 +77,7 @@
                 </div>
 
                 <!-- View All Button -->
-                <div class="text-center mt-12">
+                <div class="text-center mt-16 mb-6">
                     <a href="{{ url('/posts') }}"
                         class="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
                         <span>Lihat Semua Berita</span>

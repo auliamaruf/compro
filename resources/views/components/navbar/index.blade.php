@@ -132,51 +132,10 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Add Water Sources Menu -->
                         <div class="relative group" tabindex="0">
                             <button
                                 class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
-                                <span>Sumber Air</span>
-                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-
-                            <div
-                                class="absolute left-0 top-full w-64 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                                <div class="h-2 bg-transparent"></div>
-                                <div
-                                    class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
-                                    <a href="{{ route('water-source.index') }}"
-                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
-                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                        </svg>
-                                        <span class="font-medium">Semua Sumber</span>
-                                    </a>
-                                    <a href="{{ route('water-source.active') }}"
-                                        class="flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
-                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
-                                        <span class="font-medium">Sumber Aktif</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pelanggan Dropdown -->
-                        <div class="relative group" tabindex="0">
-                            <button
-                                class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
-                                <span>Tarif</span>
+                                <span>Informasi Layanan</span>
                                 <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -209,16 +168,106 @@
                                         </svg>
                                         <span class="font-medium">Tarif Dasar</span>
                                     </a>
+                                    <a href="{{ url('/pasang-baru') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <span class="font-medium">Pemasangan Baru</span>
+                                    </a>
+                                    <a href="{{ url('/sambung-kembali') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                        <span class="font-medium">Penyambungan Kembali</span>
+                                    </a>
+                                    <a href="{{ url('/tutup-sambungan') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M6 18L18 6M6 6l12 12"></path>
+                                        </svg>
+                                        <span class="font-medium">Penutupan Sambungan</span>
+                                    </a>
+                                    <a href="{{ url('/balik-nama') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                            </path>
+                                        </svg>
+                                        <span class="font-medium">Balik Nama</span>
+                                    </a>
+                                    <a href="{{ url('/ketentuan-pelanggan') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                                            </path>
+                                        </svg>
+                                        <span class="font-medium">Ketentuan Pelanggan</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
 
-                        <button onclick="openContactModal()"
-                            class="nav-link relative text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
-                            <span>Kontak</span>
-                            <span
-                                class="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
-                        </button>
+                        <div class="relative group" tabindex="0">
+                            <button
+                                class="nav-link flex items-center text-white font-medium px-3 py-2 hover:text-blue-200 transition-colors duration-300">
+                                <span>Informasi Perusahaan</span>
+                                <svg class="w-4 h-4 ml-1 transition-transform duration-300 group-hover:rotate-180"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </button>
+
+                            <div
+                                class="absolute left-0 top-full w-48 invisible opacity-0 transform -translate-y-2 group-hover:translate-y-0 group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                                <div class="h-2 bg-transparent"></div>
+                                <div
+                                    class="bg-white rounded-xl shadow-xl border border-blue-50/50 backdrop-blur-sm p-2">
+                                    <a href="{{ url('/biaya-tetap') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                            </path>
+                                        </svg>
+                                        <span class="font-medium">Sumber Mata Air</span>
+                                    </a>
+                                    <a href="{{ url('/tarif-dasar') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                        <span class="font-medium">Reservoar</span>
+                                    </a>
+                                    <a href="{{ url('/tarif-dasar') }}"
+                                        class="flex items-center space-x-2 px-3 py-2.5 text-gray-700 hover:bg-blue-50 rounded-lg group transition-all duration-300">
+                                        <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z">
+                                            </path>
+                                        </svg>
+                                        <span class="font-medium">Pelanggan</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Mobile Menu Structure -->
@@ -261,7 +310,7 @@
                             <div class="h-[calc(100vh-64px)] overflow-y-auto">
                                 <nav class="px-4 py-6 space-y-4">
                                     <!-- Beranda -->
-                                    <a href="#beranda"
+                                    <a href="/"
                                         class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
@@ -360,17 +409,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Pelayanan -->
-                                    <a href="#pelayanan"
-                                        class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                        <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                            </path>
-                                        </svg>
-                                        <span class="font-medium">Pelayanan</span>
-                                    </a>
 
                                     <!-- Mobile Menu - Pelanggan Dropdown -->
                                     <div class="mobile-dropdown">
@@ -384,7 +422,7 @@
                                                         d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                                                     </path>
                                                 </svg>
-                                                <span class="font-medium">Tarif</span>
+                                                <span class="font-medium">Informasi Pelanggan</span>
                                             </div>
                                             <svg class="dropdown-arrow w-5 h-5 transition-transform duration-200"
                                                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -419,60 +457,14 @@
                                     </div>
 
                                     <!-- Water Sources Mobile Menu -->
-                                    <div class="mobile-dropdown">
-                                        <button
-                                            class="w-full flex items-center justify-between p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                            <div class="flex items-center space-x-3">
-                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                                </svg>
-                                                <span class="font-medium">Sumber Air</span>
-                                            </div>
-                                            <svg class="dropdown-arrow w-5 h-5 transition-transform duration-200"
-                                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                    d="M19 9l-7 7-7-7"></path>
-                                            </svg>
-                                        </button>
-                                        <div class="dropdown-content hidden pl-12 pr-4 space-y-2 mt-2">
-                                            <a href="{{ route('water-source.index') }}"
-                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                                <span>Semua Sumber</span>
-                                            </a>
-                                            <a href="{{ route('water-source.active') }}"
-                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                                <span>Sumber Aktif</span>
-                                            </a>
-                                            <div class="text-sm text-gray-300 px-4 pt-2">Tipe Sumber:</div>
-                                            <a href="{{ route('water-source.type', 'spring') }}"
-                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                                <span>Spring</span>
-                                            </a>
-                                            <a href="{{ route('water-source.type', 'well') }}"
-                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                                <span>Well</span>
-                                            </a>
-                                            <a href="{{ route('water-source.type', 'river') }}"
-                                                class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
-                                                <span>River</span>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <!-- Kontak -->
-                                    <a href="#"
-                                        onclick="event.preventDefault(); openContactModal(); document.getElementById('mobile-menu').classList.add('hidden');"
+                                    <a href="{{ route('water-source.index') }}"
                                         class="flex items-center space-x-3 p-4 rounded-xl text-white hover:bg-blue-700/50 transition-colors duration-200">
                                         <svg class="w-6 h-6" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                                            </path>
+                                                d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                                         </svg>
-                                        <span class="font-medium">Kontak</span>
+                                        <span class="font-medium">Informasi Perusahaan</span>
                                     </a>
                                 </nav>
                             </div>

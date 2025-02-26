@@ -3,9 +3,10 @@
 @endphp
 
 <!-- Profile Section -->
-<section id="profile-section" class="container mx-auto min-h-screen px-4 py-6 md:py-12">
+<section id="profile-section" class="container mx-auto min-h-[50vh] px-4 pb-4 pt-6">
+
     <div
-        class="bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-[0_0_25px_-5px_rgba(0,0,0,0.2)] p-4 md:p-8 max-w-6xl mx-auto">
+        class="bg-white from-blue-50 to-white rounded-xl shadow-[0_0_25px_-5px_rgba(0,0,0,0.2)] p-4 md:p-8 max-w-6xl mx-auto">
         <!-- Title -->
         <div class="text-center mb-6 md:mb-8 relative">
             <h2 class="text-2xl md:text-4xl font-bold relative">
