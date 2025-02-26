@@ -3,7 +3,7 @@
 @endphp
 
 <div id="sejarah-content" class="tab-content hidden">
-    <div class="bg-white rounded-2xl shadow-lg p-4 md:p-8">
+    <div class="bg-white rounded-2xl shadow-[0_0_15px_rgba(0,0,0,0.1)] mt-4 mb-8 p-4 md:p-8">
         @if ($histories->count() > 0)
             <div class="relative">
                 <div
@@ -19,7 +19,7 @@
                                         <div
                                             class="transform group-hover:-translate-x-2 transition-transform duration-300">
                                             <h4 class="text-2xl font-bold text-blue-600 mb-2">{{ $history->year }}</h4>
-                                            <p class="text-gray-600">{{ $history->description }}</p>
+                                            <p class="text-gray-600">{!! strip_tags($history->description) !!}</p>
                                         </div>
                                     </div>
                                     <div
@@ -39,7 +39,7 @@
                                         <div
                                             class="transform group-hover:translate-x-2 transition-transform duration-300">
                                             <h4 class="text-2xl font-bold text-blue-600 mb-2">{{ $history->year }}</h4>
-                                            <p class="text-gray-600">{{ $history->description }}</p>
+                                            <p class="text-gray-600">{!! strip_tags($history->description) !!}</p>
                                         </div>
                                     </div>
                                 @endif

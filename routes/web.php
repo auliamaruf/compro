@@ -38,3 +38,24 @@ Route::prefix('water-sources')->group(function () {
     Route::get('/search', [WaterSourceController::class, 'search'])->name('water-source.search');
     Route::get('/{id}', [WaterSourceController::class, 'show'])->name('water-source.show');
 });
+
+// Article Routes
+Route::get('/pasang-baru', function () {
+    return view('articles.pasang-baru.index');
+})->name('articles.pasang-baru');
+
+Route::get('/sambung-kembali', function () {
+    return view('articles.sambung-kembali.index');
+})->name('articles.sambung-kembali');
+
+Route::get('/tutup-sambungan', function () {
+    return view('articles.tutup-sambungan.index');
+})->name('articles.tutup-sambungan');
+
+Route::get('/balik-nama', function () {
+    return view('articles.balik-nama.index');
+})->name('articles.balik-nama');
+
+Route::get('/ketentuan-pelanggan', function () {
+    return view('articles.ketentuan-pelanggan.index');
+})->name('articles.ketentuan-pelanggan');
